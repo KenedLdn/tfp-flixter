@@ -1,8 +1,29 @@
+.frosty {
+  font-family: "Helvetica Neue", Helvetica;
+  padding-left: 20px;
+}
+
+.frosty h1 {
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  color: #0A3A4A;
+  text-shadow: rgba(255,255,255,0.95) 1px 1px;
+}
+
+.frosty .btn {
+  border-radius: 0px;
+}
+
 .navbar {
   background: url('carbon_fibre.png');
   font-family: quicksandbold_italic;
   font-size: 20px;
   border-radius: 0px;
+  border: 0px;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar {
+  margin:0;
 }
 
 .navbar-default .navbar-brand{
@@ -12,4 +33,14 @@
 
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
+}
+
+.hero {
+  background: url('fly.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 370px;
+  box-shadow: 0px 3px 8px #2a2a2a;
 }
