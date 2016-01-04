@@ -22,6 +22,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use Devise
 gem 'devise'
 
+# Use Simple Form
+gem 'simple_form'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

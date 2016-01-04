@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :courses
   attr_accessor :login
 
   devise :database_authenticatable, :registerable,

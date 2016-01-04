@@ -1,0 +1,13 @@
+<br />
+<div class="card-tallbox col-xs-10 col-xs-offset-1">
+  <h1>Add a new course</h1>
+    <%= simple_form_for @course, :url => instructor_courses_path, :method => :create do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <br />
+    <%= f.submit 'Create', :class => 'btn btn-primary' %>
+    <br />
+  <% end %>
+  <br />
+</div>
