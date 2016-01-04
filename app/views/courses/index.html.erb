@@ -6,7 +6,7 @@
   <% @courses.each do |course| %>
     <hr class="clear" />
     <h2 class="text-center">
-      <%= course.title %>
+      <%= link_to course.title, course_path(course.id) %>
     <span class="h4"><i><% if course.user_id.nil? %>
       by Anonymous
       <% else %>
