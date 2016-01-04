@@ -1,0 +1,24 @@
+<br />
+<div class="card-tallbox col-xs-10 col-xs-offset-1">
+  <br />
+  <h1 class="text-center">All courses</h1>
+  <br />
+  <% @courses.each do |course| %>
+    <hr class="clear" />
+    <h2 class="text-center">
+      <%= course.title %>
+    <span class="h4"><i><% if course.user_id.nil? %>
+      by Anonymous
+      <% else %>
+      by <%= User.find(course.user_id).username %>
+      <% end %></i></span>
+      </h2>
+    <div class="col-sm-8 col-xs-12">
+    <h5><%= course.description %></h5>
+    </div>
+    <div class="col-sm-4 col-xs-12 text-center">
+      <%= link_to 'View Course', course_path(course.id), :class => 'btn btn-primary btn-large' %>
+    </div>
+  <br class="clear" />
+  <% end %>
+</div>
