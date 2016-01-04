@@ -23,17 +23,17 @@
 }
 
 h1, h2, h3, h4, h5, h6, .navbar {
-  margin:0;
+  margin: 0;
 }
 
 .navbar-default .navbar-brand{
   color: white;
   font-size: 30px;
+  margin:1000;
 }
 
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
-  margin: auto auto auto auto;
 }
 
 .hero {
@@ -49,4 +49,23 @@ h1, h2, h3, h4, h5, h6, .navbar {
 body {
   background: url('cream_dust.png');
   font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+.card-tallbox {
+  font-family: 'quicksandregular', sans-serif;
+  background-color: #ffffff;
+  border: solid 1px #D9D9DE;
+  border-radius: 6px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  position: relative;
+  font-size: 12px;
+}
+
+.card-tallbox h1, h3, h2, h6{
+  font-family: 'quicksandbold', sans-serif;
+}
+
+.clear {
+  clear:both;
 }
