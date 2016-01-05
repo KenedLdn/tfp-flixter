@@ -12,7 +12,11 @@
       </div>
       <br />
       <br class="clear"/>
-      By <%= @course.user.username %>
+      by <% if @course.user_id.nil? %>
+          Anonymous
+        <% else %>
+          <%= @course.user.username %>
+        <% end %>
     </h3>
     <br />
     <% if current_user && @course.user == current_user %>
@@ -21,6 +25,14 @@
   </div>
   <div class="col-sm-8 col-xs-12">
     <h3><%= @course.description %></h3>
+    <br />
+    <h3>Sections</h3>
+    <ul>
+      <% @course.sections.each do |section| %>
+        <li><%= section.title %></li>
+      <% end %>
+    </ul>
+    <br />
   </div>
   <br class="clear"/>
   <br />

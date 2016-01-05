@@ -2,7 +2,9 @@ Flixter::Application.routes.draw do
   devise_for :users
   root 'static_pages#index'
   namespace :instructor do
-    resources :courses
+    resources :courses do
+      resources :sections, :only => [:new, :create, :destroy]
+    end
   end
   resources :courses
   # The priority is based upon order of creation: first created -> highest priority.
