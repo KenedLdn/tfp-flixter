@@ -9,11 +9,13 @@
   <br class="clear" />
   <ul>
     <% current_course.sections.order(:id).each do |section| %>
+      <div class="section">
       <li>
         <%= section.title %>
         <%= link_to 'Add a Lesson', new_instructor_section_lesson_path(section.id), :class => "pull-right btn btn-primary btn-xs" %>
         <br class="clear" />
         <% section.lessons.order(:id).each do |lesson| %>
+          <div class="lesson">
           <ul>
             <li>
               <b><%= lesson.title %></b>
@@ -23,9 +25,11 @@
               <br />
             </li>
           </ul>
+          </div>
         <% end %>
         <br />
       </li>
+      </div>
     <% end %>
   </ul>
   <br />

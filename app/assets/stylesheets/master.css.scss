@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
 }
 
 .hero {
-  background: url('fly.jpg') no-repeat center center fixed; 
+  background: url('fly.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -76,4 +76,14 @@ body {
   border-radius: 3px;
   padding:8px;
   margin:10px;
+}
+
+.section {
+  border-color: black;
+  background: grey;
+}
+
+.lesson {
+  border-color: black;
+  background: white;
 }
