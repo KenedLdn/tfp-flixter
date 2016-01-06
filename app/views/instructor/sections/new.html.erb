@@ -4,7 +4,7 @@
   <h1 class="text-center">Add a new section</h1>
   <br />
   <br />
-  <%= simple_form_for @section, :url => instructor_course_sections_path(@course) do |f| %>
+  <%= simple_form_for @section, :url => instructor_course_sections_path(current_course) do |f| %>
     <%= f.input :title, :label => "Section Title", :placeholder => "e.g. Week 1 / Chapter 1 / Part 1" %>
     <br />
     <%=f.submit 'Add Section', :class => "btn btn-success" %>

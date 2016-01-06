@@ -28,7 +28,7 @@
     <br />
     <h3>Sections</h3>
     <ul>
-      <% @course.sections.each do |section| %>
+      <% @course.sections.order(:id).each do |section| %>
         <li><%= section.title %></li>
       <% end %>
     </ul>

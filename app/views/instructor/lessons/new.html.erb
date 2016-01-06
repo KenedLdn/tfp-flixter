@@ -4,7 +4,7 @@
   <h1 class="text-center">Add a new section</h1>
   <br />
   <br />
-  <%= simple_form_for @lesson, :url => instructor_section_lessons_path(@section) do |f| %>
+  <%= simple_form_for @lesson, :url => instructor_section_lessons_path(current_section) do |f| %>
     <%= f.input :title, :label => "Lesson Title", :placeholder => "e.g. [Lesson 1] The origin of calculus" %>
     <br />
     <%= f.input :transcript %>

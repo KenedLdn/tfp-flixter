@@ -1,13 +1,27 @@
 class Instructor::SectionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_authorized_for_current_course
+
   def new
-    @course = Course.find(params[:course_id])
     @section = Section.new
   end
 
   def create
-    @course = Course.find(params[:course_id])
-    @section = @course.sections.create(section_params)
-    redirect_to edit_instructor_course_path(@course)
+    @section = current_course.sections.create(section_params)
+    redirect_to edit_instructor_course_path(current_course)
+  end
+
+  private
+
+  helper_method :current_course
+  def current_course
+    @current_course ||= Course.find(params[:course_id])
+  end
+
+  def require_authorized_for_current_course
+    if current_user != @course.user
+      return render :text => "Unauthorized", :status => :unauthorized
+    end
   end
 
   def section_params
