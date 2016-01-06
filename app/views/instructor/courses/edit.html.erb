@@ -1,4 +1,4 @@
-<br />
+<br class="clear" />
 <div class="card-tallbox col-xs-10 col-xs-offset-1">
   <h1><%= @course.title %></h1>
   <br class="clr" />
@@ -6,9 +6,26 @@
   <br class="clear"/>
 
   <h3>Sections</h3>
+  <br class="clear" />
   <ul>
-    <% @course.sections.each do |section| %>
-      <li><%= section.title %></li>
+    <% @course.sections.order(:id).each do |section| %>
+      <li>
+        <%= section.title %>
+        <%= link_to 'Add a Lesson', new_instructor_section_lesson_path(section.id), :class => "pull-right btn btn-primary btn-xs" %>
+        <br class="clear" />
+        <% section.lessons.order(:id).each do |lesson| %>
+          <ul>
+            <li>
+              <b><%= lesson.title %></b>
+              -
+              <%= lesson.transcript %>
+              <br class="clear" />
+              <br />
+            </li>
+          </ul>
+        <% end %>
+        <br />
+      </li>
     <% end %>
   </ul>
   <br />
