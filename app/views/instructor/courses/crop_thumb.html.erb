@@ -1,0 +1,14 @@
+<h1>Crop Thumbnail</h1>
+  <%= image_tag @course.image.url(:large), :id => "cropbox" %>
+
+<h4>Preview</h4>
+<div style="width: 100px; height: 100px; overflow: hidden">
+  <%= image_tag @course.image.url(:large), :id => "preview" %>
+</div>
+
+<%= simple_form_for @course do |f| %>
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %> <br />
+  <% end %>
+  <%= f.submit 'Crop' %>
+<% end %>
