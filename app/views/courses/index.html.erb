@@ -7,18 +7,23 @@
     <hr class="clear" />
     <h2 class="text-center">
       <%= link_to course.title, course_path(course.id) %>
-    <span class="h4"><i><% if course.user_id.nil? %>
-      by Anonymous
-      <% else %>
-      by <%= User.find(course.user_id).username %>
-      <% end %></i></span>
-      </h2>
+      <span class="h4">
+        <i><% if course.user_id.nil? %>
+        by Anonymous
+        <% else %>
+        by <%= User.find(course.user_id).username %>
+        <% end %></i>
+      </span>
+    </h2>
+
+    <%= image_tag course.image, :class=>"img-responsive"%>
+
     <div class="col-sm-8 col-xs-12">
     <h5><%= course.description %></h5>
     </div>
     <div class="col-sm-4 col-xs-12 text-center">
       <%= link_to 'View Course', course_path(course.id), :class => 'btn btn-primary btn-large' %>
     </div>
-  <br class="clear" />
+    <br class="clear" />
   <% end %>
 </div>

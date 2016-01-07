@@ -3,3 +3,5 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
 Flixter::Application.initialize!
+
+require 'carrierwave/orm/activerecord'
