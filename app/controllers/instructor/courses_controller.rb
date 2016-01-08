@@ -21,7 +21,7 @@ class Instructor::CoursesController < ApplicationController
 
   def edit
   end
-  
+
   private
 
   helper_method :current_course

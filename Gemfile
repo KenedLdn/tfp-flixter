@@ -37,6 +37,10 @@ gem "fog", "~> 1.3.1"
 # Use minimagick
 gem 'mini_magick', '~> 4.3.1'
 
+# Use Pry-Rails
+gem 'pry-rails'
+gem 'pry-nav'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
