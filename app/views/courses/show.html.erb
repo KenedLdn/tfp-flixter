@@ -29,22 +29,24 @@
     <br />
     <h3>Sections</h3>
       <% @course.sections.order(:id).each do |section| %>
-      <div class="section">
-      <ul>
-        <li><%= section.title %></li>
-        <% section.lessons.order(:id).each do |lesson| %>
-          <div class="lesson">
-          <%= link_to lesson_path(lesson) do %>
-            <ul>
-              <li><b><%= lesson.title %></b></li>
-            </ul>
+        <br /><br />
+        <div class="section text-center">
+          <h3><%= section.title %></h3>
+          <br class="clear" />
+          <% section.lessons.order(:id).each do |lesson| %>
+            <div class="col-xs-12 col-sm-6">
+              <div class="lesson">
+                <%= link_to lesson_path(lesson) do %>
+                  <b><%= lesson.title %></b>
+                <% end %>
+              </div>
+            </div>
           <% end %>
-          </div>
-        <% end %>
-      </ul>
-      </div>
+          <br class="clear"/>
+          <br />
+        </div>
       <% end %>
-    <br />
+    <br class="clear" />
   </div>
   <br class="clear"/>
   <br />
