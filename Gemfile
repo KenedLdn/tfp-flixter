@@ -28,6 +28,9 @@ gem 'simple_form'
 # Use CarreirWave
 gem 'carrierwave'
 
+# Use Ranked-model
+gem 'ranked-model'
+
 # Use Figaro
 gem 'figaro'
 
