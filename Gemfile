@@ -31,6 +31,9 @@ gem 'carrierwave'
 # Use Figaro
 gem 'figaro'
 
+# Use Stripe
+gem 'stripe'
+
 # Use CarrierWave-AWS
 gem 'carrierwave-aws'
 

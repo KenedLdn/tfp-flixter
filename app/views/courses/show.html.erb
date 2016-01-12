@@ -11,15 +11,32 @@
       <% if current_user.enrolled_in?(@course) %>
         <div class="label label-info">You Are Enrolled!</div>
       <% else %>
-        <%= link_to  'Enroll', course_enrollments_path(@course), method: :post, :class => "btn btn-primary" %>
+        <% if @course.free? %>
+          <%= link_to  'Enroll for FREE', course_enrollments_path(@course), method: :post, :class => "btn btn-primary" %>
+        <% else %>
+          <%= form_tag course_enrollments_path(@course) do %>
+            <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+              <label class="amount">
+                <span>Price: <%= number_to_currency(@course.price, :unit => "£") %></span>
+              </label>
+            </article>
+
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="<%= @course.title %> (<%= number_to_currency @course.price %>)"
+                    data-amount="<%= @course.price.to_i * 100 %>"
+                    data-currency="gbp"
+                    data-locale="auto"></script>
+          <% end %>
+        <% end %>
       <% end %>
       <br class="clear"/>
       <br />
-      <div class="label label-default">
-        <%= number_to_currency(@course.price, :unit => "£") %>
-      </div>
-      <br />
-      <br class="clear"/>
       by <% if @course.user_id.nil? %>
           Anonymous
         <% else %>
