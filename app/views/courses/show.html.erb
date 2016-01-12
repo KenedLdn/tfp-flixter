@@ -41,13 +41,13 @@
           <h3><%= section.title %></h3>
           <br class="clear" />
           <% section.lessons.order(:id).each do |lesson| %>
-            <div class="col-xs-12 col-sm-6">
-              <div class="lesson">
-                <%= link_to lesson_path(lesson) do %>
-                  <b><%= lesson.title %></b>
-                <% end %>
+            <%= link_to lesson_path(lesson) do %>
+              <div class="col-xs-12 col-sm-6">
+                <div class="lesson">
+                    <h3 style="color: white"><%= lesson.title %></h3>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
           <br class="clear"/>
           <br />
