@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :courses
   attr_accessor :login
+
+  has_many :courses
+  has_many :enrollments
+  has_many :enrolled_courses, through: :enrollments, source: :course
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
@@ -27,5 +30,9 @@ class User < ActiveRecord::Base
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  def enrolled_in?(course)
+    return enrolled_courses.include?(course)
   end
 end

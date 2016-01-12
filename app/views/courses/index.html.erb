@@ -5,18 +5,20 @@
   <br />
   <% @courses.each do |course| %>
     <hr class="clear" />
-    <h2 class="text-center">
-      <%= link_to course.title, course_path(course.id) %>
-      <span class="h4">
-        <i><% if course.user_id.nil? %>
-        by Anonymous
-        <% else %>
-        by <%= User.find(course.user_id).username %>
-        <% end %></i>
-      </span>
-    </h2>
+    <%= link_to course_path(course.id) do %>
+      <h2 class="text-center">
+        <%= course.title %>
+        <span class="h4">
+          <i><% if course.user_id.nil? %>
+          by Anonymous
+          <% else %>
+          by <%= User.find(course.user_id).username %>
+          <% end %></i>
+        </span>
+      </h2>
 
-    <%= image_tag course.image, :class=>"img-responsive"%>
+      <%= image_tag course.image, :class=>"img-responsive"%>
+    <% end %>
 
     <div class="col-sm-8 col-xs-12">
     <h5><%= course.description %></h5>
