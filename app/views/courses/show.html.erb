@@ -37,7 +37,7 @@
                 }
                 today = yyyy+'/'+mm+'/'+dd;
 
-                $('#clock').countdown(today + ' 12:34:56')
+                $('#clock').countdown(today + ' 19:30:00')
                 .on('update.countdown', function(event) {
                    var format = '%H:%M:%S';
                    if(event.offset.days > 0) {
@@ -90,7 +90,7 @@
   </div>
 
   <div class="col-sm-8 col-xs-12">
-      <% @course.sections.order(:id).each do |section| %>
+      <% @course.sections.rank(:row_order).each do |section| %>
         <br />
         <div class="section text-center">
           <h3><%= section.title %></h3>
