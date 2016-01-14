@@ -20,7 +20,7 @@ class Instructor::SectionsController < ApplicationController
   private
 
   def current_section
-    @current_section ||= Section.find(params[:section_id])
+    @current_section ||= Section.find(params[:id])
   end
 
   def require_authorized_for_current_section

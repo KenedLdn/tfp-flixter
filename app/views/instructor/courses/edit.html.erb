@@ -4,7 +4,7 @@
       update: function( event, ui ) {
         $.ajax({
           method: "PUT",
-          url: ui.item.data('lessonUpdate-url'),
+          url: ui.item.data('update-url'),
           dataType: "json",
           data: { lesson: { row_order_position: ui.item.index() } }
         });
@@ -15,7 +15,7 @@
       update: function( event, ui ) {
         $.ajax({
           method: "PUT",
-          url: ui.item.data('sectionUpdate-url'),
+          url: ui.item.data('update-url'),
           dataType: "json",
           data: { section: { row_order_position: ui.item.index() } }
         });
@@ -37,7 +37,7 @@
   <br class="clear" />
   <div class="sections">
     <% current_course.sections.rank(:row_order).each do |section| %>
-      <div class="section" data-sectionUpdate-url=<%= instructor_section_path(section) %>>
+      <div class="section" data-update-url=<%= instructor_section_path(section) %>>
         <div class="col-xs-10">
           <h3><%= section.title %></h3>
         </div>
@@ -48,7 +48,7 @@
         <br />
         <div class="lessons">
           <% section.lessons.rank(:row_order).each do |lesson| %>
-            <div class="lesson text-center" style="color: white" data-lessonUpdate-url=<%= instructor_lesson_path(lesson) %>>
+            <div class="lesson text-center" style="color: white" data-update-url=<%= instructor_lesson_path(lesson) %>>
               <br />
               <h3><%= lesson.title %></h3>
               -
