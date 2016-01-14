@@ -105,3 +105,16 @@ body {
 a:hover {
   text-decoration: none;
 }
+
+.countdown {
+    transition: all 0.5s ease-in-out;
+    background-color: #56F0CC;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    color: #444;
+    margin: 20px 0;
+    text-align: center;
+    padding: 20px;
+}
+
+.section ul { display:table; margin:0 auto;}

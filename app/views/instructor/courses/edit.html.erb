@@ -1,3 +1,18 @@
+<script>
+  $(function(){
+    $(".lessons").sortable({
+      update: function( event, ui ) {
+        $.ajax({
+          method: "PUT",
+          url: ui.item.data('update-url'),
+          dataType: "json",
+          data: { lesson: { row_order_position: ui.item.index() } }
+        });
+    }
+    });
+  })
+</script>
+
 <br class="clear" />
 <div class="card-tallbox col-xs-10 col-xs-offset-1">
   <h1><%= current_course.title %></h1>
@@ -20,16 +35,18 @@
         </div>
         <br class="clear" />
         <br />
-        <% section.lessons.rank(:row_order).each do |lesson| %>
-          <div class="lesson text-center" style="color: white">
-            <br />
+        <div class="lessons">
+          <% section.lessons.rank(:row_order).each do |lesson| %>
+            <div class="lesson text-center" style="color: white" data-update-url=<%= instructor_lesson_path(lesson) %>>
+              <br />
               <h3><%= lesson.title %></h3>
               -
               <h4><%= lesson.transcript %></h4>
               <br class="clear" />
               <br />
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
         <br />
       </div>
     <% end %>
