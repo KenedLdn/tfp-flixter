@@ -16,6 +16,7 @@ class Instructor::CoursesController < ApplicationController
   end
 
   def edit
+    @section = Section.new
   end
 
   private
