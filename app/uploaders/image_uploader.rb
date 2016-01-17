@@ -38,11 +38,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process :resize_to_fill => [800, 350]
+    process :resize_to_fill => [700, 250]
   end
 
   def crop
-  binding.pry
     if model.crop_x.present?
       resize_to_fit(800, 350)
       manipulate! do |img|
@@ -50,7 +49,7 @@ class ImageUploader < CarrierWave::Uploader::Base
         y = model.crop_y.to_i
         w = model.crop_w.to_i
         h = model.crop_h.to_i
-        img.crop!("#{w}x#{h}+#{x}+#{y}")
+        img.crop("#{w}x#{h}+#{x}+#{y}")
       end
     end
   end
