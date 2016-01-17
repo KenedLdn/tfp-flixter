@@ -39,7 +39,7 @@
     <% current_course.sections.rank(:row_order).each do |section| %>
       <div class="section" data-update-url=<%= instructor_section_path(section) %>>
         <div class="col-xs-10">
-          <h3><%= section.title %></h3>
+          <h3><i class="fa fa-ellipsis-v fa-x3"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= section.title %></h3>
         </div>
         <div class="col-xs-2">
           <h3><%= link_to 'Add a Lesson', new_instructor_section_lesson_path(section.id), :class => "pull-right btn btn-primary" %></h3>
@@ -50,6 +50,7 @@
           <% section.lessons.rank(:row_order).each do |lesson| %>
             <div class="lesson text-center" style="color: white" data-update-url=<%= instructor_lesson_path(lesson) %>>
               <br />
+              <h3 style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ellipsis-v fa-x3"></i></h3>
               <h3><%= lesson.title %></h3>
               -
               <h4><%= lesson.transcript %></h4>
