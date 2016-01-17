@@ -17,3 +17,4 @@
 //= require_tree .
 
 //= require jquery-ui
+//= require jquery.Jcrop

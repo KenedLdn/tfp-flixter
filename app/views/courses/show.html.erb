@@ -4,7 +4,7 @@
   <br />
   <h1 class="text-center"><%= @course.title %></h1>
   <br />
-  <%= image_tag @course.image, :class=>"img-responsive" %>
+  <%= image_tag @course.image.url(:large), :class=>"img-responsive" %>
   <br />
   <br class="clear"/>
 

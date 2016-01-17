@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :aws
-  
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -25,16 +25,34 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   #Process files as they are uploaded:
-  process :resize_to_fill => [800, 350]
+  # process :resize_to_fill => [800, 350]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  version :thumb do
+    process :crop
+    process :resize_to_fit => [250, 250]
+  end
+
+  version :large do
+    process :resize_to_fill => [700, 250]
+  end
+
+  def crop
+    if model.crop_x.present?
+      resize_to_fit(800, 350)
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop("#{w}x#{h}+#{x}+#{y}")
+      end
+    end
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

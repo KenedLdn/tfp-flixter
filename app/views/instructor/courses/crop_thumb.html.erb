@@ -10,7 +10,5 @@
   <% %w[x y w h].each do |attribute| %>
     <%= f.hidden_field "crop_#{attribute}" %> <br />
   <% end %>
-  <div class="actions">
-    <%= f.submit 'Crop' %>
-  </div>
+  <%= f.submit 'Crop' %>
 <% end %>

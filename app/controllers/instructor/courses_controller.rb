@@ -9,7 +9,11 @@ class Instructor::CoursesController < ApplicationController
   def create
     @course = current_user.courses.create(course_params)
     if @course.valid?
-      redirect_to edit_instructor_course_path(@course)
+      if @course.image.present?
+        render :crop_thumb
+      else
+        redirect_to edit_instructor_course_path(@course)
+      end
     else
       render :new, :status => :unprocessable_entity
     end
