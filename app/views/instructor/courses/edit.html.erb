@@ -21,6 +21,11 @@
         });
     }
     });
+
+    $(".new-lesson-button").click(function(){
+      var lessonUrl = $(event.target).data('lesson-url');
+      $('#newLessonForm').attr('action', lessonUrl);
+    })
   })
 </script>
 
@@ -42,7 +47,37 @@
           <h3><i class="fa fa-ellipsis-v fa-x3"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= section.title %></h3>
         </div>
         <div class="col-xs-2">
-          <h3><%= link_to 'Add a Lesson', new_instructor_section_lesson_path(section.id), :class => "pull-right btn btn-primary" %></h3>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
+            Add a Lesson
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="newLessonModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
+                </div>
+                <%= simple_form_for @lesson, :url => '#', html: {id: 'newLessonForm' } do |f| %>
+                  <div class="modal-body">
+                      <%= f.input :title, :label => "Lesson Title", :placeholder => "e.g. [Lesson 1] The origin of calculus" %>
+                      <br />
+                      <%= f.input :transcript %>
+                      <br />
+                      <%= f.input :video %>
+                      <br />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <%=f.submit 'Add', :class => "btn btn-success" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
         <br class="clear" />
         <br />
@@ -84,7 +119,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <%=f.submit 'Add Section', :class => "btn btn-success" %>
+              <%=f.submit 'Add', :class => "btn btn-success" %>
           </div>
         <% end %>
       </div>
