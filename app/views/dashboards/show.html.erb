@@ -7,7 +7,7 @@
       <div class="lesson" style="background: #53A6C2; height: auto">
         <%= link_to course_path(course) do %>
           <h3 class="text-center"><%= course.title %></h3>
-          <%= image_tag course.image, class: 'img-responsive' %>
+          <%= image_tag course.image.url(:thumb), class: 'img-responsive center-block' %>
           More...
         <% end %>
       </div>
@@ -23,7 +23,7 @@
       <div class="lesson" style="background: #53A6C2; height: auto">
         <%= link_to course_path(course) do %>
           <h3 class="text-center"><%= course.title %></h3>
-          <%= image_tag course.image, class: 'img-responsive' %>
+          <%= image_tag course.image.url(:thumb), class: 'img-responsive center-block' %>
           More...
         <% end %>
       </div>
