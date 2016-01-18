@@ -1,4 +1,4 @@
-$footer-height: 60px;
+$footer-height: 100px;
 
 html, body {
   height: 100%;
@@ -18,8 +18,35 @@ html, body {
   font-family: "Helvetica Neue",Helvetica;
   padding:10px 0px;
   margin-top:30px;
+  font-weight: 100;
 }
 
 #footer a {
   color: white;
+}
+
+#footer a:hover {
+  text-decoration: none;
+}
+
+#footer .social-button {
+  width: 32px;
+  margin: 2px;
+}
+
+.social a {
+  color: white;
+}
+
+$footer-height-mobile: 200px;
+@media (max-width: 750px) {
+  #footer {
+    height:$footer-height-mobile;
+  }
+
+  #wrap {
+    margin: 0 auto -$footer-height-mobile;
+    /* Pad bottom by footer height */
+    padding: 0 0 $footer-height-mobile;
+  }
 }

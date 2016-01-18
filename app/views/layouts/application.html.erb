@@ -72,8 +72,55 @@
   <br class="clear" />
   <div id="footer">
     <div class="container">
-      <b>Become an instructor</b>
-      <%= link_to 'Teach a Course', new_instructor_course_path %>
+      <div class="col-xs-6 col-sm-3">
+        <b>Become an instructor</b>
+        <br />
+        <%= link_to 'Teach a Course', new_instructor_course_path %>
+        <br />
+        <%= link_to 'My Dashboard', dashboard_path %>
+        <br />
+        <br />
+      </div>
+
+      <div class="col-xs-6 col-sm-3">
+        <b>About</b>
+        <br />
+        <%= link_to 'Team', '#' %>
+        <br />
+        <%= link_to 'Careers', '#' %>
+        <br />
+        <%= link_to 'Privacy Policy', '#' %>
+        <br />
+        <br />
+      </div>
+
+      <div class="col-xs-6 col-sm-3">
+        <b>Contact</b>
+        <br />
+        ken@thefirehoseproject.com
+        <br />
+        One Kendall Square
+        <br />
+        Cambridge MA, 02113
+        <br />
+        <br />
+      </div>
+
+      <div class="col-xs-6 col-sm-3 social">
+        <b>Social</b>
+        <br />
+        <%= link_to 'https://facebook.com/kened.ho.9' do %>
+          <%= image_tag 'facebook.svg', :class => 'social-button' %>
+        <% end %>
+        <%= link_to 'https://github.com/KenedLdn' do %>
+          <%= image_tag 'github.svg', :class => 'social-button' %>
+        <% end %>
+        <%= link_to 'https://www.linkedin.com/in/ken-ho-97660857?trk=hp-identity-name' do %>
+          <%= image_tag 'linkedin.svg', :class => 'social-button' %>
+        <% end %>
+        <br />
+        <br />
+      </div>
     </div>
   </div>
 </body>
