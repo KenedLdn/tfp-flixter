@@ -5,6 +5,7 @@ Flixter::Application.routes.draw do
   get'careers', to: 'static_pages#careers'
   get 'privacy', to: 'static_pages#privacy'
   resource :dashboard, :only => [:show]
+
   resources :courses, :only => [:index, :show] do
     resources :enrollments, :only => [:create]
   end

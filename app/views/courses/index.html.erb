@@ -1,33 +1,47 @@
 <br />
 <div class="card-tallbox col-xs-10 col-xs-offset-1">
   <br />
-  <h1 class="text-center">All courses</h1>
-  <br />
-  <% @courses.each do |course| %>
-    <hr class="clear" />
-    <%= link_to course_path(course.id) do %>
-      <h2 class="text-center">
-        <%= course.title %>
-        <span class="h4">
-          <i><% if course.user_id.nil? %>
-          by Anonymous
-          <% else %>
-          by <%= User.find(course.user_id).username %>
-          <% end %></i>
-        </span>
-      </h2>
-      <br />
-      <%= image_tag course.image.url(:large), :class=>"img-responsive center-block"%>
-    <% end %>
+  <% if @course.blank? %>
+    <h3>Your search did not match any courses.</h3>
+    <br /><br />
+    <h4>Suggestions:
+    <br /><br />
+      <ul>
+        <li>Make sure that all words are spelled correctly.</li><br />
+        <li>Try different keywords.</li><br />
+        <li>Try more general keywords.</li><br />
+        <li>Try fewer keywords.</li><br />
+      </ul>
+    </h4>
+  <% else %>
+    <h1 class="text-center">All courses</h1>
     <br />
+    <% for course in @course %>
+      <hr class="clear" />
+      <%= link_to course_path(course.id) do %>
+        <h2 class="text-center">
+          <%= course.title %>
+          <span class="h4">
+            <i><% if course.user_id.nil? %>
+            by Anonymous
+            <% else %>
+            by <%= User.find(course.user_id).username %>
+            <% end %></i>
+          </span>
+        </h2>
+        <br />
+        <%= image_tag course.image.url(:large), :class=>"img-responsive center-block"%>
+      <% end %>
+      <br />
 
-    <div class="col-sm-8 col-xs-12">
-    <h5><%= course.description %></h5>
-    </div>
-    <div class="col-sm-4 col-xs-12 text-center">
-      <%= link_to 'View Course', course_path(course.id), :class => 'btn btn-primary btn-large' %>
-    </div>
-    <br class="clear" />
+      <div class="col-sm-8 col-xs-12">
+      <h5><%= course.description %></h5>
+      </div>
+      <div class="col-sm-4 col-xs-12 text-center">
+        <%= link_to 'View Course', course_path(course.id), :class => 'btn btn-primary btn-large' %>
+      </div>
+      <br class="clear" />
+    <% end %>
   <% end %>
   <br class="clear" />
   <br />

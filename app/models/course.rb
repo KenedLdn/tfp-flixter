@@ -11,6 +11,14 @@ class Course < ActiveRecord::Base
   validates :description, :presence => true
   validates :price, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
 
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['LOWER(title) LIKE ?', "%#{search.downcase}%"])
+    else
+      find(:all)
+    end
+  end
+
   def crop_image
     image.recreate_versions! if crop_x.present?
   end
